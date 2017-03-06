@@ -14,7 +14,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:dev/spring-*.xml</param-value>
+            <param-value>classpath:spring-*.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -23,12 +23,11 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- shiro过滤器定义 
+    <!--  shiro过滤器定义   该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->
     <filter>
         <filter-name>shiroFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-             该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 
+        <init-param>    
             <param-name>targetFilterLifecycle</param-name>
             <param-value>true</param-value>
         </init-param>
@@ -36,6 +35,16 @@
     <filter-mapping>
         <filter-name>shiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
-
+    </filter-mapping>
+    
+<!--      <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:/dev/spring-mybatis.xml
+            classpath:/dev/spring-shiro.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener> -->
 </web-app>
